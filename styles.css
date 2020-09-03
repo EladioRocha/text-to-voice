@@ -1,0 +1,29 @@
+main {
+  display: block;
+}
+
+.content {
+  border:1px solid #999999;
+  margin:5px 0;
+  padding:3px;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+  width: 100%;
+}
+
+.btn-record {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  outline-color: transparent;
+  cursor: pointer;
+}
