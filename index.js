@@ -1,31 +1,45 @@
-const recognition = new webkitSpeechRecognition()
+const btnRecord = document.querySelector('.btn-record'),
+  textarea = document.querySelector('textarea')
+  recognition = new webkitSpeechRecognition()
+
+let recording = false,
+  finalText = ''
+
 recognition.continuous = true
 recognition.interimResults = true
 recognition.lang = "es-MX"
 
 recognition.onstart = function() {
   recognizing = true;
-  console.log("empezando a escuchar");
+  finalText = ''
 }
+
 recognition.onresult = function(event) {  
-  for (var i = event.resultIndex; i < event.results.length; i++) {
+  for (let i = event.resultIndex; i < event.results.length; i++) {
     if(event.results[i].isFinal) {
-      console.log(event.results[i][0].transcript)
+      finalText += event.results[i][0].transcript
     }
+
+    textarea.innerText = event.results[i][0].transcript
   }
-  
-  //texto
 }
 recognition.onerror = function(event) {
+  console.log(event)
 }
 recognition.onend = function() {
-  // recognizing = false;
-  console.log("terminó de escuchar, llegó a su fin");
-
+  textarea.innerText = finalText
 }
 
-recognition.start()
+function processVoice() {
+  if(!recording) {
+    recognition.start()
+    btnRecord.innerText = 'Detener'
+  } else {
+    recognition.stop()
+    btnRecord.innerText = 'Empezar a grabar'
+  }
 
-setTimeout(() => {
-  recognition.stop()
-}, 5000)
+  recording = !recording
+}
+
+btnRecord.addEventListener('click', processVoice)
