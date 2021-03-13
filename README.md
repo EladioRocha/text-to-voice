@@ -1,5 +1,5 @@
-"# text-to-voice" 
+"#Text to voice" 
 
-Aplicación utilizando la API de reconocimiento de voz con Javascript
+Application using speech recognition API with Javascript
 
-![alt text](https://github.com/EladioRocha/text-to-voice/blob/master/example.png)
+![Text to voice example of text](https://github.com/EladioRocha/text-to-voice/blob/master/example.png)
