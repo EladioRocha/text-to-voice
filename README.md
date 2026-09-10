@@ -1,36 +1,29 @@
-# text-to-voice
+# Browser Speech to Text
 
-Demostración de transcripción de voz a texto en el navegador. Aunque el repositorio se llama text-to-voice, `index.js` utiliza `webkitSpeechRecognition` con idioma `es-MX`. Requiere permiso de micrófono y un navegador que implemente esa API.
+A small browser demo that **transcribes speech into text** using `webkitSpeechRecognition`. It includes microphone controls, interim results, and a final transcript. The recognition language is configured as Mexican Spanish (`es-MX`).
 
-## Estructura
+![Speech transcription example](example.png)
 
-- [index.html](index.html)
-- [index.js](index.js)
+## Run locally
 
-## Preparación y uso
+Use a browser that implements `webkitSpeechRecognition` and allow microphone access when prompted. There is no package installation or build step.
 
-Sirve la raíz con un servidor estático; por ejemplo, si tienes Python 3:
+Serve the repository with a local HTTP server. For example, with Python 3 installed:
 
 ```sh
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Abre `http://127.0.0.1:8000/` y navega al ejemplo:
+Open **http://127.0.0.1:8000/**, click the recording control, speak, and stop recording to see the final text. The page's existing controls remain in Spanish.
 
-- [index.html](index.html)
+## Files
 
-Los recursos cargados desde servicios externos requieren conexión. La comprobación local debe incluir la consola del navegador y la carga de imágenes, scripts y estilos.
+- [index.html](index.html): page markup and controls.
+- [index.js](index.js): recognition lifecycle and transcript handling.
+- [styles.css](styles.css): page styling.
 
-## Validación y estado
+## Compatibility and validation
 
-Esta guía se contrastó con el árbol de archivos y los manifiestos del repositorio. No se ha validado una ejecución completa contra servicios externos, bases de datos o hardware. Las versiones y los scripts mostrados describen el código actual; no implican que sus dependencias antiguas sigan siendo compatibles.
+The code uses a browser-prefixed API, so support is browser-dependent. The browser's recognition service may require internet access. If recording does not start, check API support, microphone permissions, and the browser console.
 
-## Documentación previa
-
-Se conserva como referencia histórica, incluidas las imágenes y atribuciones originales. Los enlaces a demos y servicios no se han comprobado.
-
-"#Text to voice"
-
-Application using speech recognition API with Javascript
-
-![Text to voice example of text](https://github.com/EladioRocha/text-to-voice/blob/master/example.png)
+The repository does not contain automated tests. Verify starting, stopping, interim text, and final text manually. This project performs speech recognition; it does not synthesize speech from text.
